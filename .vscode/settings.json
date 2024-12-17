@@ -1,0 +1,9 @@
+{
+    "files.exclude": {
+        "**/autenticacaoJWT": true
+    },
+    "cSpell.words": [
+        "aprovar",
+        "verifica"
+    ]
+}
