@@ -162,3 +162,5 @@ cython_debug/
 #.idea/
 
 autenticacaoJWT/*
+**/__pycache__": true,
+.__pytest_cache
