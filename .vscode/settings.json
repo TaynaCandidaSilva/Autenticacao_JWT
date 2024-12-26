@@ -8,5 +8,8 @@
         "**/__pycache__": true,
         "**/__pytest_cache__": true,
         "**/autenticacaoJWT": true
-    }
+    },
+    "cSpell.words": [
+        "dotenv"
+    ]
 }
