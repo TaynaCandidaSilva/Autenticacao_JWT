@@ -16,7 +16,7 @@ class LoginCreator:
         hashed_password = user[2]
 
         self.__verify_correct_password(password, hashed_password)
-        token = self.create_jwt_token(user_id)
+        token = self.__create_jwt_token(user_id)
         return self.__formated_response(username, token)
 
     def __find_user(self, username: str) -> Tuple[int, str, str]:
@@ -38,5 +38,5 @@ class LoginCreator:
         token = self.__jwt_handler.create_jwt_token(payload)
         return token
 
-    def formated_response(self, username: str, token: str) -> Dict:
-        return {"acess": True, "username": username, "token": token}
+    def __formated_response(self, username: str, token: str) -> Dict:
+        return {"access": True, "username": username, "token": token}
