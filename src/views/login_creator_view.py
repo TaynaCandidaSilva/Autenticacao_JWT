@@ -1,7 +1,7 @@
 from src.controllers.interfaces.login_creator import LoginCreatorInterface
 from src.views.http_types.http_request import HttpRequest
 from src.views.http_types.http_response import HttpResponse
-from src.views.interfaces.view_interface import ViewInterface
+from .interfaces.view_interface import ViewInterface
 
 
 class LoginCreatorView(ViewInterface):
