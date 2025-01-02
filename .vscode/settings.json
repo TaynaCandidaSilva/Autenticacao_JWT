@@ -10,6 +10,7 @@
         "**/autenticacaoJWT": true
     },
     "cSpell.words": [
-        "dotenv"
+        "dotenv",
+        "jsonify"
     ]
 }
