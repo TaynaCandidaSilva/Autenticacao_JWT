@@ -1,5 +1,5 @@
-from typing import Tuple
 from sqlite3 import Connection
+from typing import Tuple
 from src.models.interface.user_repository import UserRepositoryInterface
 
 
@@ -10,10 +10,12 @@ class UserRepository(UserRepositoryInterface):
     def registry_user(self, username: str, password: str) -> None:
         cursor = self.__conn.cursor()
         cursor.execute(
-            "INSERT INTO users (username, password, balance) VALUES (?, ?, ?)",
+            """
+            INSERT INTO users (username, password, balance) 
+            VALUES (?, ?, ?);
+            """,
             (username, password, 0),
         )
-
         self.__conn.commit()
 
     def edit_balance(self, user_id: int, new_balance: float) -> None:
@@ -26,19 +28,17 @@ class UserRepository(UserRepositoryInterface):
             """,
             (new_balance, user_id),
         )
-
         self.__conn.commit()
 
     def get_user_by_username(self, username: str) -> Tuple[int, str, str]:
         cursor = self.__conn.cursor()
         cursor.execute(
             """
-            SELECT id, username, password
-            FROM users
+            SELECT id, username, password, balance
+            FROM users,
             WHERE username = ?
             """,
             (username,),
         )
-
         user = cursor.fetchone()
         return user

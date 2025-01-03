@@ -9,7 +9,6 @@ class HttpRequest:
         params: Dict = None,
         token_infos: Dict = None,
     ) -> None:
-
         self.body = body
         self.headers = headers
         self.params = params

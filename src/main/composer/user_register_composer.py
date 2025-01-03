@@ -6,7 +6,7 @@ from src.views.user_register_view import UserRegisterView
 
 def user_register_composer():
     conn = db_connection_handler.get_connection()
-    model = UserRegister(conn)
+    model = UserRepository(conn)
     controller = UserRegister(model)
     view = UserRegisterView(controller)
 

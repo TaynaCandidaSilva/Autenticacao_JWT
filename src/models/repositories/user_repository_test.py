@@ -1,5 +1,4 @@
 from .user_repository import UserRepository
-from src.models.settings.db_connection_handler import db_connection_handler
 from unittest.mock import Mock
 
 
@@ -16,8 +15,8 @@ class MockConnection:
 
 
 def test_registry_user():
-    username = "Fred"
-    password = "123456"
+    username = "fred"
+    password = "Yabadabadoo"
 
     mock_connection = MockConnection()
     repo = UserRepository(mock_connection)
@@ -48,8 +47,10 @@ def test_edit_balance():
     assert "WHERE id = ?" in cursor.execute.call_args[0][0]
     assert cursor.execute.call_args[0][1] == (balance, user_id)
 
+    mock_connection.commit.assert_called_once()
 
-def test_et_user_by_username():
+
+def test_get_user_by_username():
     username = "meuUsername"
 
     mock_connection = MockConnection()
@@ -59,7 +60,7 @@ def test_et_user_by_username():
 
     cursor = mock_connection.cursor.return_value
 
-    assert "SELECT id, username, password" in cursor.execute.call_args[0][0]
+    assert "SELECT id, username, password, balance" in cursor.execute.call_args[0][0]
     assert "FROM users" in cursor.execute.call_args[0][0]
     assert "WHERE username = ?" in cursor.execute.call_args[0][0]
     assert cursor.execute.call_args[0][1] == (username,)

@@ -30,4 +30,5 @@ def test_handle_user_register_with_validation_error():
     mock_controller = MockController()
     user_register_view = UserRegisterView(mock_controller)
 
-    user_register_view.handle(request)
+    with pytest.raises(Exception):
+        user_register_view.handle(request)

@@ -9,4 +9,4 @@ class BalanceEditor(BalanceEditorInterface):
 
     def edit(self, user_id: int, new_balance: float) -> Dict:
         self.__user_repository.edit_balance(user_id, new_balance)
-        return {"type": "User", "count": 1, "new_balance": new_balance}
+        return {"type": "User", "count": 1, "new balance": new_balance}
