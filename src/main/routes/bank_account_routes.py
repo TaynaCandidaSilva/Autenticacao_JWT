@@ -5,6 +5,7 @@ from src.main.composer.user_register_composer import user_register_composer
 from src.main.composer.login_creator_composer import login_creator_composer
 from src.main.composer.balance_editor_composer import balance_editor_composer
 from src.main.middlewares.auth_jwt import auth_jwt_verify
+from src.errors.error_handler import handle_errors
 
 
 bank_routes_bp = Blueprint("bank_routes", __name__)
@@ -17,6 +18,7 @@ def registry_user():
         http_response = user_register_composer().handle(http_request)
         return jsonify(http_response.body), http_response.status_code
     except Exception as exception:
+        http_response = handle_errors(exception)
         return jsonify(http_response.body), http_response.status_code
 
 
@@ -27,6 +29,7 @@ def create_login():
         http_response = login_creator_composer().handle(http_request)
         return jsonify(http_response.body), http_response.status_code
     except Exception as exception:
+        http_response = handle_errors(exception)
         return jsonify(http_response.body), http_response.status_code
 
 
@@ -43,4 +46,5 @@ def edit_balance(user_id):
         http_response = balance_editor_composer().handle(http_request)
         return jsonify(http_response.body), http_response.status_code
     except Exception as exception:
+        http_response = handle_errors(exception)
         return jsonify(http_response.body), http_response.status_code
